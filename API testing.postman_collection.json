@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "37522b72-8686-46ff-966a-2a45efb7cb23",
+		"name": "API testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET All blogposts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/blogposts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blogposts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateNew blogpost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": 2,\n        \"title\": \"My Second Blog Post\",\n        \"author\": \"Jhon Jones\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/blogposts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blogposts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verifydata",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e40be06-a89e-4911-805c-797d5f129095",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\":3,\n        \"title\": \"My Second Blog Post\",\n        \"author\": \"Jhon Jones\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/blogposts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blogposts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetChildRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e40be06-a89e-4911-805c-797d5f129095",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\":3,\n        \"title\": \"My Second Blog Post\",\n        \"author\": \"Jhon Jones\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/blogposts?_embed=comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blogposts"
+					],
+					"query": [
+						{
+							"key": "_embed",
+							"value": "comments"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateChildRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e40be06-a89e-4911-805c-797d5f129095",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"id\": 1,\n            \"body\": \"some comment changed\",\n            \"blogpostId\": 1\n        }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/comments/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"comments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VerifyUpdatedChildRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e40be06-a89e-4911-805c-797d5f129095",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"id\": 1,\n            \"body\": \"some comment changed\",\n            \"blogpostId\": 1\n        }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/blogposts/1?_embed=comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blogposts",
+						"1"
+					],
+					"query": [
+						{
+							"key": "_embed",
+							"value": "comments"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getblogposts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e40be06-a89e-4911-805c-797d5f129095",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"id\": 1,\n            \"body\": \"some comment changed\",\n            \"blogpostId\": 1\n        }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/blogposts/1?_embed=comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blogposts",
+						"1"
+					],
+					"query": [
+						{
+							"key": "_embed",
+							"value": "comments"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
