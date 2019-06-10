@@ -299,6 +299,98 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Deleteblogpost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e40be06-a89e-4911-805c-797d5f129095",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"id\": 1,\n            \"body\": \"some comment changed\",\n            \"blogpostId\": 1\n        }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/blogposts/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blogposts",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VerifyDeletedBlogpost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e40be06-a89e-4911-805c-797d5f129095",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"id\": 1,\n            \"body\": \"some comment changed\",\n            \"blogpostId\": 1\n        }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/blogposts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blogposts"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
